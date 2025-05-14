@@ -231,3 +231,5 @@
 2025-05-07 21:06:47,580 - INFO - The server is running
 2025-05-07 21:06:47,590 - WARNING -  * Debugger is active!
 2025-05-07 21:06:47,594 - INFO -  * Debugger PIN: 497-750-970
+2025-05-07 21:15:49,735 - INFO -  * Detected change in 'c:\\Users\\user\\Институт\\PABD25\\Проект_3\\pabd25\\servise\\app.py', reloading
+2025-05-07 21:15:49,956 - INFO -  * Restarting with stat
