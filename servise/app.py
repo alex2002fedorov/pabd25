@@ -87,13 +87,22 @@ def process_numbers():
     num2 = data.get('number2')
     num3 = data.get('number3')
     num4 = data.get('number4')
+    num5 = data.get('number5')
+    num6 = data.get('number6')
+    num7 = data.get('number7')
 
     try:
+        print(num5)
+        print(num6)
+        print(num7)
         num1 = float(num1)
         num2 = int(num2)
         num3 = int(num3)
         num4 = int(num4)
-        logger.info(f"The data has been successfully converted: {num1}, {num2}, {num3}, {num4}")
+        num4 = int(num5)
+        num4 = int(num6)
+        num4 = int(num7)
+        logger.info(f"The data has been successfully converted: {num1}, {num2}, {num3}, {num4}, {num5}, {num6}, {num7}")
     except (ValueError, TypeError) as e:
         logger.error(f"Error in data processing: {e}")
         return {'status': 'error', 'message': 'Ошибка при обработке данных'}
@@ -108,8 +117,7 @@ def process_numbers():
     if model is not None:
         try:
             # Преобразуем данные в 2D массив для модели
-            input_df = pd.DataFrame([[num1, num4, num3, num2]], columns=['total_meters', 'floors_count', 'floor', 'rooms_count'])
-            prediction = model.predict([[num1, num4, num3, num2]])[0]
+            prediction = model.predict([[num1, num4, num3, num2, num5, num6, num7]])[0]
             predicted_price = round(float(prediction), 2)
             logger.info(f"Predicted price: {predicted_price}")
             return {'status': 'success', 'message': f'Предсказанная цена: {format_rubles(predicted_price)}'}

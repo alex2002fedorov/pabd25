@@ -4,7 +4,7 @@ import os
 import cianparser
 import pandas as pd
 
-moscow_parser = cianparser.CianParser(location="Москва")
+moscow_parser = cianparser.CianParser(location="Санкт-Петербург")
 
 def parse_flats(n_rooms, output_dir='data/raw'):
     """
@@ -22,7 +22,7 @@ def parse_flats(n_rooms, output_dir='data/raw'):
         with_saving_csv=False,
         additional_settings={
             "start_page": 1,
-            "end_page": 50,
+            "end_page": 20,
             "object_type": "secondary"
         })
     

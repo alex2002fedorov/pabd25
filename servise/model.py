@@ -2,7 +2,7 @@ import datetime
 import os
 import pandas as pd
 from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LinearRegression
+from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.metrics import mean_squared_error, r2_score
 import joblib
 import numpy as np
@@ -10,6 +10,7 @@ import glob
 import cianparser
 import logging
 from typing import Tuple, Optional
+import json
 
 # Настройка логирования
 def setup_logging(log_file: str = './pabd25/logs/app.log') -> None:
@@ -30,6 +31,7 @@ logger = logging.getLogger(__name__)
 
 # Инициализация парсера
 moscow_parser = cianparser.CianParser(location="Москва")
+spb_parser = cianparser.CianParser(location="Санкт-Петербург")
 
 def parse_flats_data(n_rooms: int, output_dir: str = './pabd25/data/raw') -> pd.DataFrame:
     """
@@ -49,17 +51,30 @@ def parse_flats_data(n_rooms: int, output_dir: str = './pabd25/data/raw') -> pd.
         os.makedirs(output_dir, exist_ok=True)
         logger.info(f"Начало парсинга данных для {n_rooms}-комнатных квартир")
         
-        data = moscow_parser.get_flats(
+        data_moscow = moscow_parser.get_flats(
             deal_type="sale",
             rooms=(n_rooms,),
             with_saving_csv=False,
             additional_settings={
                 "start_page": 1,
-                "end_page": 10,
+                "end_page": 20,
                 "object_type": "secondary"
             })
         
-        df = pd.DataFrame(data)
+        data_spb = spb_parser.get_flats(
+            deal_type="sale",
+            rooms=(n_rooms,),
+            with_saving_csv=False,
+            additional_settings={
+                "start_page": 1,
+                "end_page": 20,
+                "object_type": "secondary"
+            })
+        
+        df = pd.concat([
+            pd.DataFrame(data_moscow),
+            pd.DataFrame(data_spb)
+        ], ignore_index=True)
         df.to_csv(csv_path, encoding='utf-8', index=False)
         logger.info(f"Сохранено {len(df)} записей для {n_rooms}-комнатных квартир в {csv_path}")
         return df
@@ -97,7 +112,7 @@ def clean_and_prepare_data() -> pd.DataFrame:
         logger.info(f"Объединенный датасет содержит {initial_count} записей")
         
         # Выбор нужных столбцов
-        new_dataframe = main_dataframe[['total_meters', 'price', 'floor', 'floors_count', 'rooms_count']]
+        new_dataframe = main_dataframe[['total_meters', 'price', "floor", "floors_count", "rooms_count", "location", "district", "underground"]]
         
         # Удаление пропущенных значений
         new_dataframe = new_dataframe.dropna()
@@ -122,6 +137,20 @@ def clean_and_prepare_data() -> pd.DataFrame:
         
         logger.info(f"Удалено {initial_size - len(new_dataframe)} выбросов")
         logger.info(f"Итоговый размер датасета: {len(new_dataframe)} строк")
+
+        #Замена категориальных признаков
+        mapping_dict = {
+            'location': {val: idx+1 for idx, val in enumerate(new_dataframe['location'].unique())},
+            'district': {val: idx+1 for idx, val in enumerate(new_dataframe['district'].unique())},
+            'underground': {val: idx+1 for idx, val in enumerate(new_dataframe['underground'].unique())}
+        }
+        for column in ['location', 'district', 'underground']:
+            new_dataframe[column] = new_dataframe[column].map(mapping_dict[column])
+        
+        os.makedirs(os.path.dirname('./pabd25/indo_dataset/info.json'), exist_ok=True)
+
+        with open('./pabd25/indo_dataset/info.json', 'w', encoding='utf-8') as f:
+            json.dump(mapping_dict, f, ensure_ascii=False, indent=4)
         
         # Сохранение очищенных данных
         cleaned_path = './pabd25/data/cleaned_data.csv'
@@ -134,7 +163,7 @@ def clean_and_prepare_data() -> pd.DataFrame:
         logger.error(f"Ошибка при очистке данных: {str(e)}")
         raise
 
-def train_and_evaluate_model(data: pd.DataFrame) -> LinearRegression:
+def train_and_evaluate_model(data: pd.DataFrame) -> GradientBoostingRegressor:
     """
     Обучает модель линейной регрессии на подготовленных данных.
     
@@ -142,7 +171,7 @@ def train_and_evaluate_model(data: pd.DataFrame) -> LinearRegression:
         data: DataFrame с подготовленными данными
         
     Returns:
-        Обученная модель LinearRegression
+        Обученная модель GradientBoostingRegressor
     """
     try:
         if data.empty:
@@ -152,7 +181,7 @@ def train_and_evaluate_model(data: pd.DataFrame) -> LinearRegression:
         logger.info("Начало обучения модели")
         
         # Разделение на признаки и целевую переменную
-        X = data[['total_meters', 'floor', 'floors_count', 'rooms_count']]
+        X = data[['total_meters', "floor", "floors_count", "rooms_count", "location", "district", "underground"]]
         y = data['price']
         
         # Разделение на тренировочную и тестовую выборки
@@ -162,7 +191,7 @@ def train_and_evaluate_model(data: pd.DataFrame) -> LinearRegression:
         logger.info(f"Данные разделены: train={len(X_train)}, test={len(X_test)}")
         
         # Обучение модели
-        model = LinearRegression()
+        model = GradientBoostingRegressor()
         model.fit(X_train, y_train)
         logger.info("Модель успешно обучена")
         
@@ -180,9 +209,7 @@ def train_and_evaluate_model(data: pd.DataFrame) -> LinearRegression:
                    f"MSE: {mse:.2f}\n"
                    f"RMSE: {rmse:.2f}\n"
                    f"R²: {r2:.6f}\n"
-                   f"Средняя абсолютная ошибка: {mean_abs_error:.2f} рублей\n"
-                   f"Коэффициенты: {model.coef_}\n"
-                   f"Свободный член: {model.intercept_:.2f}")
+                   f"Средняя абсолютная ошибка: {mean_abs_error:.2f} рублей\n")
         
         return model
     
@@ -190,7 +217,7 @@ def train_and_evaluate_model(data: pd.DataFrame) -> LinearRegression:
         logger.error(f"Ошибка при обучении модели: {str(e)}")
         raise
 
-def save_model(model: LinearRegression, model_path: str) -> None:
+def save_model(model: GradientBoostingRegressor, model_path: str) -> None:
     """
     Сохраняет обученную модель в файл.
     
@@ -206,7 +233,7 @@ def save_model(model: LinearRegression, model_path: str) -> None:
         logger.error(f"Ошибка при сохранении модели: {str(e)}")
         raise
 
-def load_model(model_path: str) -> Optional[LinearRegression]:
+def load_model(model_path: str) -> Optional[GradientBoostingRegressor]:
     """
     Загружает модель из файла.
     
@@ -228,26 +255,22 @@ def load_model(model_path: str) -> Optional[LinearRegression]:
         logger.error(f"Ошибка при загрузке модели: {str(e)}")
         raise
 
-def make_prediction(model: LinearRegression, 
+def make_prediction(model: GradientBoostingRegressor, 
                    total_meters: float, 
                    floor: int, 
                    floors_count: int, 
-                   rooms_count: int) -> float:
+                   rooms_count: int,
+                   location: int, 
+                   district: int, 
+                   underground: int) -> float:
     """
     Делает предсказание цены квартиры с помощью модели.
-    
-    Args:
-        model: Обученная модель
-        total_meters: Площадь квартиры
-        floor: Этаж
-        floors_count: Всего этажей в доме
-        rooms_count: Количество комнат
         
     Returns:
         Предсказанная цена квартиры
     """
     try:
-        prediction = model.predict([[total_meters, floor, floors_count, rooms_count]])[0]
+        prediction = model.predict([[total_meters, floor, floors_count, rooms_count, location, district, underground]])[0]
         logger.info(f"Предсказанная цена для квартиры {total_meters} м², "
                    f"{rooms_count} комнат, этаж {floor}/{floors_count}: {prediction:.2f} рублей")
         return prediction
@@ -263,9 +286,9 @@ def main():
         logger.info("Запуск пайплайна обработки данных")
         
         # 1. Парсинг данных
-        logger.info("Начало этапа парсинга данных")
-        for n_rooms in [1, 2]:
-            parse_flats_data(n_rooms)
+        #logger.info("Начало этапа парсинга данных")
+        #for n_rooms in [1, 2]:
+            #parse_flats_data(n_rooms)
         
         # 2. Очистка и подготовка данных
         logger.info("Начало этапа очистки данных")
@@ -288,7 +311,7 @@ def main():
         logger.info("Тестирование модели на примере")
         loaded_model = load_model(model_path)
         if loaded_model:
-            make_prediction(loaded_model, 50, 5, 10, 2)
+            make_prediction(loaded_model, 50, 5, 10, 2, 1, 2, 3)
         
         logger.info("Пайплайн успешно завершен")
     
