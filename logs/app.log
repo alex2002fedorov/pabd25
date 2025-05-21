@@ -702,3 +702,27 @@ AttributeError: 'GradientBoostingRegressor' object has no attribute 'coef_'
 2025-05-21 20:02:24,662 - __main__ - INFO - Тестирование модели на примере
 2025-05-21 20:02:24,688 - __main__ - INFO - Модель успешно загружена из ./pabd25/models/house_price_model_2025-05-21_20-02.pkl
 2025-05-21 20:02:24,694 - __main__ - INFO - Пайплайн успешно завершен
+2025-05-21 21:09:38,266 - __main__ - INFO - The beginning of data processing
+2025-05-21 21:09:38,267 - __main__ - INFO - 8 CSV files found for processing
+2025-05-21 21:09:38,329 - __main__ - INFO - The combined dataset contains 3815 records
+2025-05-21 21:09:38,333 - __main__ - INFO - Deleted 238 rows with missing values
+2025-05-21 21:09:38,337 - __main__ - INFO - Deleted 1216 duplicates
+2025-05-21 21:09:38,347 - __main__ - INFO - Removed 508 emissions
+2025-05-21 21:09:38,347 - __main__ - INFO - Total dataset size: 2091 rows
+2025-05-21 21:09:38,363 - __main__ - INFO - The cleaned data is saved in ./pabd25/data/cleaned_data.csv
+2025-05-21 21:09:38,370 - __main__ - INFO - The train_df is saved in ./pabd25/data/processed/train.csv
+2025-05-21 21:09:38,373 - __main__ - INFO - The test_df is saved in ./pabd25/data/processed/train.csv
+2025-05-21 21:10:15,164 - __main__ - INFO - The beginning of data processing
+2025-05-21 21:10:15,164 - __main__ - INFO - 8 CSV files found for processing
+2025-05-21 21:10:15,201 - __main__ - INFO - The combined dataset contains 3815 records
+2025-05-21 21:10:15,203 - __main__ - INFO - Deleted 238 rows with missing values
+2025-05-21 21:10:15,205 - __main__ - INFO - Deleted 1216 duplicates
+2025-05-21 21:10:15,211 - __main__ - INFO - Removed 508 emissions
+2025-05-21 21:10:15,211 - __main__ - INFO - Total dataset size: 2091 rows
+2025-05-21 21:10:15,222 - __main__ - INFO - The cleaned data is saved in ./pabd25/data/cleaned_data.csv
+2025-05-21 21:10:15,228 - __main__ - INFO - The train_df is saved in ./pabd25/data/processed/train.csv
+2025-05-21 21:10:15,230 - __main__ - INFO - The test_df is saved in ./pabd25/data/processed/test.csv
+2025-05-21 21:28:50,018 - __main__ - INFO - The beginning of model training
+2025-05-21 21:28:50,169 - __main__ - INFO - The model has been successfully trained
+2025-05-21 21:28:50,174 - __main__ - INFO - The model was successfully saved in ./pabd25/models/house_price_model_2025-05-21_21-28.pkl
+2025-05-21 21:41:21,804 - __main__ - INFO - The model was successfully loaded from ./pabd25/models/house_price_model_2025-05-21_21-28.pkl
