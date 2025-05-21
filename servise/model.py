@@ -57,7 +57,7 @@ def parse_flats_data(n_rooms: int, output_dir: str = './pabd25/data/raw') -> pd.
             with_saving_csv=False,
             additional_settings={
                 "start_page": 1,
-                "end_page": 20,
+                "end_page": 10,
                 "object_type": "secondary"
             })
         
@@ -67,7 +67,7 @@ def parse_flats_data(n_rooms: int, output_dir: str = './pabd25/data/raw') -> pd.
             with_saving_csv=False,
             additional_settings={
                 "start_page": 1,
-                "end_page": 20,
+                "end_page": 10,
                 "object_type": "secondary"
             })
         
@@ -286,9 +286,9 @@ def main():
         logger.info("Запуск пайплайна обработки данных")
         
         # 1. Парсинг данных
-        #logger.info("Начало этапа парсинга данных")
-        #for n_rooms in [1, 2]:
-            #parse_flats_data(n_rooms)
+        logger.info("Начало этапа парсинга данных")
+        for n_rooms in [1, 2]:
+            parse_flats_data(n_rooms)
         
         # 2. Очистка и подготовка данных
         logger.info("Начало этапа очистки данных")
