@@ -1,0 +1,7 @@
+stages:
+  preprocess:
+    cmd: python ./servise/models/data_cleaning.py
+  train_model:
+    cmd: python ./servise/models/data_train.py
+  test_model:
+    cmd: python ./servise/models/data_predict.py
