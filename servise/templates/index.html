@@ -227,7 +227,7 @@
             <form id="numberForm">
                 <div class="form-group">
                     <label for="token">Токен</label>
-                    <input type="text" class="form-control" id="token" placeholder="30" min="10" max="300" step="0.1" required>
+                    <input type="text" class="form-control" id="token" required>
                     <div id="token_error" class="error-message">Введите токен</div>
                 </div>
 
@@ -811,6 +811,7 @@
             const num3 = parseInt(document.getElementById('num3').value);
             const num4 = parseInt(document.getElementById('num4').value);
             const token = document.getElementById('token').value;
+            console.log(token);
             const location = document.getElementById('location').value;
             const district = document.getElementById('district').value;
             const underground = document.getElementById('underground').value;
@@ -871,6 +872,7 @@
             const num2 = document.getElementById('num2').value;
             const num3 = document.getElementById('num3').value;
             const num4 = document.getElementById('num4').value;
+            const token = document.getElementById('token').value;
             const location = document.getElementById('location').value;
             const district = document.getElementById('district').value;
             const underground = document.getElementById('underground').value;

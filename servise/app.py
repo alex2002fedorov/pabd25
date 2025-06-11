@@ -13,6 +13,8 @@ cors = CORS(app, resources={r"/api/*": {"origins": "http://localhost:5050"}})
 
 import dotenv
 config = dotenv.dotenv_values('.env')
+print(config)
+print(config['APP_TOKEN'])
 
 from flask_httpauth import HTTPTokenAuth
 auth = HTTPTokenAuth(scheme='Bearer')
@@ -27,7 +29,7 @@ logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.FileHandler('./pabd25/logs/app.log'), 
+        logging.FileHandler('./logs/app.log'), 
         logging.StreamHandler()
     ]
 )
@@ -47,7 +49,7 @@ def get_latest_file_scandir(directory):
         return latest_file.path
 
 # Загрузка модели при старте приложения
-latest_file = get_latest_file_scandir('./pabd25/models')
+latest_file = get_latest_file_scandir('./models')
 print(latest_file)
 model = joblib.load(latest_file)
 

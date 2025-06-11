@@ -726,3 +726,107 @@ AttributeError: 'GradientBoostingRegressor' object has no attribute 'coef_'
 2025-05-21 21:28:50,169 - __main__ - INFO - The model has been successfully trained
 2025-05-21 21:28:50,174 - __main__ - INFO - The model was successfully saved in ./pabd25/models/house_price_model_2025-05-21_21-28.pkl
 2025-05-21 21:41:21,804 - __main__ - INFO - The model was successfully loaded from ./pabd25/models/house_price_model_2025-05-21_21-28.pkl
+2025-06-11 20:03:09,738 - INFO - The server is running
+2025-06-11 20:03:09,847 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-11 20:03:09,848 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-11 20:03:09,860 - INFO -  * Restarting with stat
+2025-06-11 20:03:11,089 - INFO - The server is running
+2025-06-11 20:03:11,100 - WARNING -  * Debugger is active!
+2025-06-11 20:03:11,104 - INFO -  * Debugger PIN: 805-761-556
+2025-06-11 20:03:24,345 - INFO - 127.0.0.1 - - [11/Jun/2025 20:03:24] "GET / HTTP/1.1" 200 -
+2025-06-11 20:03:24,795 - INFO - 127.0.0.1 - - [11/Jun/2025 20:03:24] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-06-11 20:03:44,963 - INFO - 127.0.0.1 - - [11/Jun/2025 20:03:44] "[31m[1mPOST /api/numbers HTTP/1.1[0m" 401 -
+2025-06-11 20:03:49,934 - INFO - 127.0.0.1 - - [11/Jun/2025 20:03:49] "[31m[1mPOST /api/numbers HTTP/1.1[0m" 401 -
+2025-06-11 20:03:50,425 - INFO - 127.0.0.1 - - [11/Jun/2025 20:03:50] "[31m[1mPOST /api/numbers HTTP/1.1[0m" 401 -
+2025-06-11 20:04:42,073 - INFO -  * Detected change in 'C:\\Users\\user\\Институт\\PABD25\\Проект_3\\pabd25\\servise\\app.py', reloading
+2025-06-11 20:04:42,267 - INFO -  * Restarting with stat
+2025-06-11 20:04:43,634 - INFO - The server is running
+2025-06-11 20:04:43,645 - WARNING -  * Debugger is active!
+2025-06-11 20:04:43,648 - INFO -  * Debugger PIN: 805-761-556
+2025-06-11 20:04:49,985 - INFO - 127.0.0.1 - - [11/Jun/2025 20:04:49] "[31m[1mPOST /api/numbers HTTP/1.1[0m" 401 -
+2025-06-11 20:05:06,500 - INFO - 127.0.0.1 - - [11/Jun/2025 20:05:06] "[31m[1mPOST /api/numbers HTTP/1.1[0m" 401 -
+2025-06-11 20:05:07,113 - INFO - 127.0.0.1 - - [11/Jun/2025 20:05:07] "[31m[1mPOST /api/numbers HTTP/1.1[0m" 401 -
+2025-06-11 20:05:07,312 - INFO - 127.0.0.1 - - [11/Jun/2025 20:05:07] "[31m[1mPOST /api/numbers HTTP/1.1[0m" 401 -
+2025-06-11 20:05:07,520 - INFO - 127.0.0.1 - - [11/Jun/2025 20:05:07] "[31m[1mPOST /api/numbers HTTP/1.1[0m" 401 -
+2025-06-11 20:05:07,719 - INFO - 127.0.0.1 - - [11/Jun/2025 20:05:07] "[31m[1mPOST /api/numbers HTTP/1.1[0m" 401 -
+2025-06-11 20:05:07,996 - INFO - 127.0.0.1 - - [11/Jun/2025 20:05:07] "[31m[1mPOST /api/numbers HTTP/1.1[0m" 401 -
+2025-06-11 20:05:21,723 - INFO -  * Detected change in 'C:\\Users\\user\\Институт\\PABD25\\Проект_3\\pabd25\\servise\\app.py', reloading
+2025-06-11 20:05:21,910 - INFO -  * Restarting with stat
+2025-06-11 20:05:23,309 - INFO - The server is running
+2025-06-11 20:05:23,321 - WARNING -  * Debugger is active!
+2025-06-11 20:05:23,323 - INFO -  * Debugger PIN: 805-761-556
+2025-06-11 20:05:25,516 - INFO - 127.0.0.1 - - [11/Jun/2025 20:05:25] "[31m[1mPOST /api/numbers HTTP/1.1[0m" 401 -
+2025-06-11 20:05:36,285 - INFO - 127.0.0.1 - - [11/Jun/2025 20:05:36] "[31m[1mPOST /api/numbers HTTP/1.1[0m" 401 -
+2025-06-11 20:07:15,577 - INFO -  * Detected change in 'C:\\Users\\user\\Институт\\PABD25\\Проект_3\\pabd25\\servise\\app.py', reloading
+2025-06-11 20:07:15,758 - INFO -  * Restarting with stat
+2025-06-11 20:07:17,117 - INFO - The server is running
+2025-06-11 20:07:17,133 - WARNING -  * Debugger is active!
+2025-06-11 20:07:17,138 - INFO -  * Debugger PIN: 805-761-556
+2025-06-11 20:07:20,990 - INFO - 127.0.0.1 - - [11/Jun/2025 20:07:20] "GET / HTTP/1.1" 200 -
+2025-06-11 20:07:42,321 - INFO - 127.0.0.1 - - [11/Jun/2025 20:07:42] "[31m[1mPOST /api/numbers HTTP/1.1[0m" 401 -
+2025-06-11 20:08:48,089 - INFO -  * Detected change in 'C:\\Users\\user\\Институт\\PABD25\\Проект_3\\pabd25\\servise\\app.py', reloading
+2025-06-11 20:08:48,257 - INFO -  * Restarting with stat
+2025-06-11 20:08:49,618 - INFO - The server is running
+2025-06-11 20:08:49,625 - WARNING -  * Debugger is active!
+2025-06-11 20:08:49,628 - INFO -  * Debugger PIN: 805-761-556
+2025-06-11 20:08:53,841 - INFO - 127.0.0.1 - - [11/Jun/2025 20:08:53] "GET / HTTP/1.1" 200 -
+2025-06-11 20:09:13,650 - INFO - Request received for /api/numberss
+2025-06-11 20:09:13,653 - INFO - The data has been successfully converted: 50.0, 2, 11, 13, 1, 6, 13
+2025-06-11 20:09:13,653 - INFO - === Data received ===
+2025-06-11 20:09:13,653 - INFO - The area of the apartment: 50.0
+2025-06-11 20:09:13,653 - INFO - Number of rooms: 2
+2025-06-11 20:09:13,654 - INFO - Floors in the house: 11
+2025-06-11 20:09:13,654 - INFO - Apartment floor: 13
+2025-06-11 20:09:13,654 - INFO - =====================
+
+2025-06-11 20:09:13,656 - INFO - Predicted price: 19131244.76
+2025-06-11 20:09:13,657 - INFO - 127.0.0.1 - - [11/Jun/2025 20:09:13] "POST /api/numbers HTTP/1.1" 200 -
+2025-06-11 20:09:20,102 - INFO - 127.0.0.1 - - [11/Jun/2025 20:09:20] "[31m[1mPOST /api/numbers HTTP/1.1[0m" 401 -
+2025-06-11 20:13:53,801 - INFO -  * Detected change in 'C:\\Users\\user\\Институт\\PABD25\\Проект_3\\pabd25\\servise\\app.py', reloading
+2025-06-11 20:13:54,010 - INFO -  * Restarting with stat
+2025-06-11 20:13:55,506 - INFO - The server is running
+2025-06-11 20:13:55,514 - WARNING -  * Debugger is active!
+2025-06-11 20:13:55,519 - INFO -  * Debugger PIN: 805-761-556
+2025-06-11 20:13:57,868 - INFO - 127.0.0.1 - - [11/Jun/2025 20:13:57] "GET / HTTP/1.1" 200 -
+2025-06-11 20:14:16,926 - INFO - 127.0.0.1 - - [11/Jun/2025 20:14:16] "[31m[1mPOST /api/numbers HTTP/1.1[0m" 401 -
+2025-06-11 20:14:22,268 - INFO - Request received for /api/numberss
+2025-06-11 20:14:22,270 - INFO - The data has been successfully converted: 123.0, 3, 22, 7, 1, 15, 7
+2025-06-11 20:14:22,271 - INFO - === Data received ===
+2025-06-11 20:14:22,272 - INFO - The area of the apartment: 123.0
+2025-06-11 20:14:22,272 - INFO - Number of rooms: 3
+2025-06-11 20:14:22,273 - INFO - Floors in the house: 22
+2025-06-11 20:14:22,273 - INFO - Apartment floor: 7
+2025-06-11 20:14:22,274 - INFO - =====================
+
+2025-06-11 20:14:22,277 - INFO - Predicted price: 29869681.92
+2025-06-11 20:14:22,281 - INFO - 127.0.0.1 - - [11/Jun/2025 20:14:22] "POST /api/numbers HTTP/1.1" 200 -
+2025-06-11 20:20:19,783 - INFO -  * Detected change in 'C:\\Users\\user\\Институт\\PABD25\\Проект_3\\pabd25\\servise\\app.py', reloading
+2025-06-11 20:20:20,004 - INFO -  * Restarting with stat
+2025-06-11 20:20:21,511 - INFO - The server is running
+2025-06-11 20:20:21,519 - WARNING -  * Debugger is active!
+2025-06-11 20:20:21,523 - INFO -  * Debugger PIN: 805-761-556
+2025-06-11 20:20:23,703 - INFO - 127.0.0.1 - - [11/Jun/2025 20:20:23] "GET / HTTP/1.1" 200 -
+2025-06-11 20:20:46,983 - INFO - Request received for /api/numberss
+2025-06-11 20:20:46,985 - INFO - The data has been successfully converted: 30.0, 3, 20, 7, 1, 7, 7
+2025-06-11 20:20:46,986 - INFO - === Data received ===
+2025-06-11 20:20:46,987 - INFO - The area of the apartment: 30.0
+2025-06-11 20:20:46,988 - INFO - Number of rooms: 3
+2025-06-11 20:20:46,990 - INFO - Floors in the house: 20
+2025-06-11 20:20:46,990 - INFO - Apartment floor: 7
+2025-06-11 20:20:46,992 - INFO - =====================
+
+2025-06-11 20:20:47,001 - INFO - Predicted price: 15725470.0
+2025-06-11 20:20:47,002 - INFO - 127.0.0.1 - - [11/Jun/2025 20:20:47] "POST /api/numbers HTTP/1.1" 200 -
+2025-06-11 20:20:51,898 - INFO - 127.0.0.1 - - [11/Jun/2025 20:20:51] "[31m[1mPOST /api/numbers HTTP/1.1[0m" 401 -
+2025-06-11 20:20:56,163 - INFO - Request received for /api/numberss
+2025-06-11 20:20:56,163 - INFO - The data has been successfully converted: 30.0, 3, 20, 7, 1, 7, 7
+2025-06-11 20:20:56,164 - INFO - === Data received ===
+2025-06-11 20:20:56,164 - INFO - The area of the apartment: 30.0
+2025-06-11 20:20:56,165 - INFO - Number of rooms: 3
+2025-06-11 20:20:56,165 - INFO - Floors in the house: 20
+2025-06-11 20:20:56,166 - INFO - Apartment floor: 7
+2025-06-11 20:20:56,166 - INFO - =====================
+
+2025-06-11 20:20:56,168 - INFO - Predicted price: 15725470.0
+2025-06-11 20:20:56,171 - INFO - 127.0.0.1 - - [11/Jun/2025 20:20:56] "POST /api/numbers HTTP/1.1" 200 -
