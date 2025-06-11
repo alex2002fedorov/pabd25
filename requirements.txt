@@ -1,5 +1,12 @@
 cianparser
 pandas
 flask
-numpy
+jupyter
 scikit-learn
+matplotlib
+black
+dvc
+flask-cors
+boto3
+python-dotenv
+flask_httpauth 
