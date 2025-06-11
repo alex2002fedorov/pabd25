@@ -2,7 +2,7 @@ cianparser
 pandas
 flask
 jupyter
-scikit-learn
+scikit-learn==1.6.1
 matplotlib
 black
 dvc
@@ -10,3 +10,5 @@ flask-cors
 boto3
 python-dotenv
 flask_httpauth 
+gunicorn
+joblib
